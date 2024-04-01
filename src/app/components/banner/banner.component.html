@@ -1,0 +1,10 @@
+<header class="banner" role="banner">
+  <div class="info">
+    <div class="info-content">
+      <ng-content select=".banner-left"></ng-content>
+    </div>
+  </div>
+</header>
+@if(loading){
+<mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+}

@@ -1,0 +1,19 @@
+<app-banner [loading]="loading$ | async">
+  <div class="banner-left">
+    <h3>Featured playlists</h3>
+  </div>
+</app-banner>
+@if(playlists$ | async; as playlist){
+<section class="container" [@listAnimation]="playlist">
+  @for(p of playlist; track p){
+  <app-tile class="item" [img]="p.artwork" [url]="p.url">
+    <div class="title">{{ p.name }}</div>
+    <div class="subtitle">{{ p.curator_name }}</div>
+  </app-tile>
+  }
+</section>
+} @else {
+<section class="loading">
+  <app-spinner></app-spinner>
+</section>
+}

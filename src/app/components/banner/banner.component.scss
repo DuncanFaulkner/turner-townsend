@@ -1,0 +1,13 @@
+.banner {
+  display: flex;
+  background: #144178;
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+  align-items: center;
+  padding: 1em 0 0;
+  color: #ffffff;
+  .info {
+    margin: 0em 1em 0;
+  }
+}
