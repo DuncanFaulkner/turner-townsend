@@ -1,19 +1,17 @@
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Playlist } from '../interfaces/playlists.interface';
 import { PORTAL_URL } from '../store/dashboard/constants';
 import { fakePlaylistData } from '../test/fake-test-data';
 import { DashboardService } from './playlists.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('Dashboard Service', () => {
   let dashboardService: DashboardService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
+    TestBed.configureTestingModule({ imports: [], providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()] });
     dashboardService = TestBed.inject(DashboardService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });

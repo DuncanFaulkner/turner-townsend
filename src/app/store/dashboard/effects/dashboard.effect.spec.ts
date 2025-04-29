@@ -1,4 +1,4 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, StoreModule } from '@ngrx/store';
@@ -13,6 +13,7 @@ import {
   getPlaylistsSuccess,
 } from '../actions/dashboard.action';
 import { DashboardEffects } from './dashboard.effect';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('dashboard effects', () => {
   let actions$ = new Observable<Action>();
@@ -21,14 +22,16 @@ describe('dashboard effects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({}), HttpClientTestingModule],
-      providers: [
+    imports: [StoreModule.forRoot({})],
+    providers: [
         DashboardEffects,
         provideMockActions(() => actions$),
         provideMockStore({}),
         DashboardService,
-      ],
-    });
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
     dashboardEffects = TestBed.inject(DashboardEffects);
     dashboardService = TestBed.inject(DashboardService);
   });

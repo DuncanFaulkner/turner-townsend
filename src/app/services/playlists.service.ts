@@ -8,10 +8,10 @@ import { PORTAL_URL } from '../store/dashboard/constants';
   providedIn: 'root',
 })
 export class DashboardService {
-  #http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   getPlaylists(): Observable<Playlist[]> {
-    return this.#http
+    return this.http
       .get<FeaturedPlaylists>(`${PORTAL_URL}/featured-playlists.json`)
       .pipe(
         map((data: FeaturedPlaylists) => data.featuredPlaylists.content),

@@ -25,47 +25,42 @@ import {
 } from '../../store/dashboard/selectors/dashboard.selector';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
-  animations: [
-    trigger('listAnimation', [
-      transition('* <=> *', [
-        query(
-          ':enter',
-          [
-            style({ opacity: 0 }),
-            stagger('150ms', animate('600ms ease-out', style({ opacity: 1 }))),
-          ],
-          { optional: true }
-        ),
-        query(':leave', animate('200ms', style({ opacity: 0 })), {
-          optional: true,
-        }),
-      ]),
-    ]),
-  ],
-  imports: [
-    AsyncPipe,
-    MatListModule,
-    MatFormFieldModule,
-    MatIconModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    BannerComponent,
-    TileComponent,
-    SpinnerComponent,
-  ],
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.scss',
+    animations: [
+        trigger('listAnimation', [
+            transition('* <=> *', [
+                query(':enter', [
+                    style({ opacity: 0 }),
+                    stagger('150ms', animate('600ms ease-out', style({ opacity: 1 }))),
+                ], { optional: true }),
+                query(':leave', animate('200ms', style({ opacity: 0 })), {
+                    optional: true,
+                }),
+            ]),
+        ]),
+    ],
+    imports: [
+        AsyncPipe,
+        MatListModule,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        BannerComponent,
+        TileComponent,
+        SpinnerComponent,
+    ]
 })
 export class DashboardComponent {
-  #store = inject(Store);
+  private readonly store = inject(Store);
 
   protected playlists$: Observable<Playlist[] | null> =
-    this.#store.select(selectPlaylistData);
+    this.store.select(selectPlaylistData);
 
-  protected loading$: Observable<boolean> = this.#store.select(
+  protected loading$: Observable<boolean> = this.store.select(
     selectPlaylistLoading
   );
 }

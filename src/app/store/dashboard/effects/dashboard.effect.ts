@@ -11,14 +11,14 @@ import {
 
 @Injectable()
 export class DashboardEffects {
-  #action$ = inject(Actions);
-  #dashboardService = inject(DashboardService);
+  private readonly action = inject(Actions);
+  private readonly dashboardService = inject(DashboardService);
 
   getPlaylists$ = createEffect(() => {
-    return this.#action$.pipe(
+    return this.action.pipe(
       ofType(getPlaylists, loadDashboardData),
       exhaustMap(() =>
-        this.#dashboardService.getPlaylists().pipe(
+        this.dashboardService.getPlaylists().pipe(
           map((playlist) => getPlaylistsSuccess({ playlist })),
           catchError((error) => of(getPlaylistsFailure({ error })))
         )
