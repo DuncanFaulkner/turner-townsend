@@ -1,6 +1,6 @@
 # Turner And Townsend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.
 
 This project uses pnpm instead of npm. Once project has been cloned at the terminal run `pnpm i` to install Node packages.
 

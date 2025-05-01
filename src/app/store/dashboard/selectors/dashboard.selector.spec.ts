@@ -1,4 +1,4 @@
-import { DashboardState } from '../../../models/dashboard.model';
+import { DashboardState } from '../../../models/dashboard.types';
 import {
   fakePlaylistData,
   fakePlaylistFailureState,

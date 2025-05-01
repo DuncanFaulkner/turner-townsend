@@ -8,11 +8,12 @@ describe('TileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TileComponent]
-    })
-    .compileComponents();
-    
+      imports: [TileComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TileComponent);
+    fixture.componentRef.setInput('img', '');
+    fixture.componentRef.setInput('url', '');
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

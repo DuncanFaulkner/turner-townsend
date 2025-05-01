@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 import { BannerComponent } from '../../components/banner/banner.component';
 import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { TileComponent } from '../../components/tile/tile.component';
-import { Playlist } from '../../interfaces/playlists.interface';
+import { Playlist } from '../../models/playlists.types';
 import {
   selectPlaylistData,
   selectPlaylistLoading,

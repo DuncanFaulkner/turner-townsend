@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { DashboardState } from '../../../models/dashboard.model';
+import { DashboardState } from '../../../models/dashboard.types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const selectDashboard = (state: any): DashboardState => state.dashboard;

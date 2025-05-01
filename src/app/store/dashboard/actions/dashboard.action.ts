@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Playlist } from '../../../interfaces/playlists.interface';
+import { Playlist } from '../../../models/playlists.types';
 import { DASHBOARD } from '../constants';
 
 export const getPlaylists = createAction(`[${DASHBOARD.KEY}] get playlists`);

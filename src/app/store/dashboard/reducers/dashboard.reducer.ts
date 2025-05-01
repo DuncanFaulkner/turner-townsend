@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { DashboardState } from '../../../models/dashboard.model';
+import { DashboardState } from '../../../models/dashboard.types';
 import {
   getPlaylists,
   getPlaylistsFailure,

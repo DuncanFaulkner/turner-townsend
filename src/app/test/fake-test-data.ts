@@ -1,5 +1,5 @@
-import { Playlist } from '../interfaces/playlists.interface';
-import { DashboardState } from '../models/dashboard.model';
+import { DashboardState } from '../models/dashboard.types';
+import { Playlist } from '../models/playlists.types';
 
 export const fakePlaylistData: Playlist[] = [
   {
