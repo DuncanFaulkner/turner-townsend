@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, of } from 'rxjs';
+import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { DashboardService } from '../../../services/playlists.service';
 import {
   getPlaylists,
@@ -20,6 +20,7 @@ export class DashboardEffects {
       exhaustMap(() =>
         this.dashboardService.getPlaylists().pipe(
           map((playlist) => getPlaylistsSuccess({ playlist })),
+          tap((playlist) => console.log(playlist)),
           catchError((error) => of(getPlaylistsFailure({ error })))
         )
       )

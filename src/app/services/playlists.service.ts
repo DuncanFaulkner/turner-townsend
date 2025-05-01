@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { FeaturedPlaylists, Playlist } from '../interfaces/playlists.interface';
-import { PORTAL_URL } from '../store/dashboard/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +11,9 @@ export class DashboardService {
 
   getPlaylists(): Observable<Playlist[]> {
     return this.http
-      .get<FeaturedPlaylists>(`${PORTAL_URL}/featured-playlists.json`)
+      .get<FeaturedPlaylists>(`http://localhost:3000/content`)
       .pipe(
-        map((data: FeaturedPlaylists) => data.featuredPlaylists.content),
+        map((data: FeaturedPlaylists) => data),
         catchError((error) => {
           return of(error.status);
         })

@@ -25,34 +25,38 @@ import {
 } from '../../store/dashboard/selectors/dashboard.selector';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrl: './dashboard.component.scss',
-    animations: [
-        trigger('listAnimation', [
-            transition('* <=> *', [
-                query(':enter', [
-                    style({ opacity: 0 }),
-                    stagger('150ms', animate('600ms ease-out', style({ opacity: 1 }))),
-                ], { optional: true }),
-                query(':leave', animate('200ms', style({ opacity: 0 })), {
-                    optional: true,
-                }),
-            ]),
-        ]),
-    ],
-    imports: [
-        AsyncPipe,
-        MatListModule,
-        MatFormFieldModule,
-        MatIconModule,
-        FormsModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        BannerComponent,
-        TileComponent,
-        SpinnerComponent,
-    ]
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
+  animations: [
+    trigger('listAnimation', [
+      transition('* <=> *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0 }),
+            stagger('150ms', animate('600ms ease-out', style({ opacity: 1 }))),
+          ],
+          { optional: true }
+        ),
+        query(':leave', animate('200ms', style({ opacity: 0 })), {
+          optional: true,
+        }),
+      ]),
+    ]),
+  ],
+  imports: [
+    AsyncPipe,
+    MatListModule,
+    MatFormFieldModule,
+    MatIconModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    BannerComponent,
+    TileComponent,
+    SpinnerComponent,
+  ],
 })
 export class DashboardComponent {
   private readonly store = inject(Store);
